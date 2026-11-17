@@ -146,14 +146,32 @@ if [ -z "${install}" ]; then
   fi
 fi
 
-echo -e ""
-echo -e "Starting ${GAMESERVER}"
-echo -e "================================="
-./"${GAMESERVER}" start
+timeout=30
+pressed=0
+
+for ((i = timeout; i > 0; i--)); do
+  printf "\rPress any key to cancel auto start... %2ds " "$i"
+  if IFS= read -r -s -n 1 -t 1 key; then
+    pressed=1
+    break
+  fi
+done
+if ((pressed)); then
+  exec /bin/bash -i
+
+else
+  echo -e ""
+  echo -e "Starting ${GAMESERVER}"
+  echo -e "================================="
+  ./"${GAMESERVER}" start
+  exec /bin/bash -i
+fi
+
 sleep 5
 ./"${GAMESERVER}" details
 sleep 2
 echo -e "Tail log files"
 echo -e "================================="
-tail -F "${LGSM_LOGDIR}"/console/*console.log "${LGSM_LOGDIR}"/script/*script.log &
-wait
+echo -e tail -F "${LGSM_LOGDIR}"/console/*console.log "${LGSM_LOGDIR}"/script/*script.log
+
+exec /bin/bash -i

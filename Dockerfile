@@ -21,7 +21,7 @@ RUN if id -u steam >/dev/null 2>&1; then echo "Removing steam user from base ima
 LABEL maintainer="LinuxGSM <me@danielgibbs.co.uk>"
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TERM=xterm
-ENV LGSM_GITHUBUSER=GameServerManagers
+ENV LGSM_GITHUBUSER=un-boxing-hosting
 ENV LGSM_GITHUBREPO=LinuxGSM
 ENV LGSM_GITHUBBRANCH=master
 ENV LGSM_LOGDIR=/data/log

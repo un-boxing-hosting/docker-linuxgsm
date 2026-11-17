@@ -9,7 +9,7 @@ services:
     container_name: gmodserver
     environment:
       - GAMESERVER=gmodserver
-      - LGSM_GITHUBUSER=GameServerManagers
+      - LGSM_GITHUBUSER=un-boxing-hosting
       - LGSM_GITHUBREPO=LinuxGSM
       - LGSM_GITHUBBRANCH=develop
     volumes:

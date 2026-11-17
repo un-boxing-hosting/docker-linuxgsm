@@ -124,6 +124,6 @@ echo -e "================================="
 (
   trap - INT QUIT
   exec gosu "${USER}" /app/entrypoint-user.sh "$@"
-) &
+) <&0 &
 childpid=$!
 wait "${childpid}"
