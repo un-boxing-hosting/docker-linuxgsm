@@ -193,11 +193,11 @@ HEALTHCHECK --interval=1m --timeout=1m --start-period=2m --retries=1 CMD /app/en
 ## Download linuxgsm.sh
 RUN echo "**** Download linuxgsm.sh ****" \
   && set -ex \
-  && curl -Lo linuxgsm.sh "https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/${LGSM_GITHUBBRANCH}/linuxgsm.sh" \
+  && curl -Lo linuxgsm.sh "https://raw.githubusercontent.com/un-boxing-hosting/LinuxGSM/${LGSM_GITHUBBRANCH}/linuxgsm.sh" \
   && chmod +x linuxgsm.sh
 
 RUN echo "**** Get LinuxGSM Modules ****" \
-  && git clone --filter=blob:none --no-checkout --sparse https://github.com/GameServerManagers/LinuxGSM.git \
+  && git clone --filter=blob:none --no-checkout --sparse https://github.com/un-boxing-hosting/LinuxGSM.git \
   && cd LinuxGSM \
   && git sparse-checkout set --cone \
   && git sparse-checkout set lgsm/modules \
